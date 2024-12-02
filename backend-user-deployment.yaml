@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: udagram-api-user
-          image: minhndn/udagram-api-user:latest
+          image: minhndn/udagram-api-user:v5
           ports:
             - containerPort: 8080 
           imagePullPolicy: IfNotPresent

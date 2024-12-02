@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: udagram-reverseproxy
-          image: minhndn/reverseproxy:v3
+          image: minhndn/reverseproxy:v5
           imagePullPolicy: IfNotPresent
           env:
             - name: POSTGRES_USERNAME

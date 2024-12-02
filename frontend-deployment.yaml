@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: udagram-frontend
-          image: minhndn/udagram-frontend:v3
+          image: minhndn/udagram-frontend:v5
           imagePullPolicy: IfNotPresent
           env:
             - name: POSTGRES_USERNAME
