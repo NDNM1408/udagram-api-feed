@@ -8,6 +8,6 @@ spec:
     app: udagram-api-feed
   ports:
     - protocol: TCP
-      port: 80           # Port exposed by the Service
+      port: 8080           # Port exposed by the Service
       targetPort: 8080   # Port exposed by the container
   type: ClusterIP

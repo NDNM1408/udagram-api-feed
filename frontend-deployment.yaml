@@ -4,7 +4,7 @@ metadata:
   name: udagram-frontend
   namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: udagram-frontend
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: udagram-frontend
-          image: minhndn/udagram-frontend:v5
+          image: minhndn/udagram-frontend:v7
           imagePullPolicy: IfNotPresent
           env:
             - name: POSTGRES_USERNAME
@@ -59,3 +59,30 @@ spec:
                   name: env-configmap
                   key: JWT_SECRET
       restartPolicy: Always
+---
+# HPA for udagram-frontend
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-udagram-frontend
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: udagram-frontend
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 70
