@@ -58,6 +58,13 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: JWT_SECRET
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
       restartPolicy: Always
 ---
 # HPA for udagram-frontend

@@ -60,6 +60,13 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: JWT_SECRET
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"     # Increased from 500m
       restartPolicy: Always
 ---
 apiVersion: autoscaling/v2

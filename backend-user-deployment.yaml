@@ -60,7 +60,13 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: JWT_SECRET
-      restartPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
